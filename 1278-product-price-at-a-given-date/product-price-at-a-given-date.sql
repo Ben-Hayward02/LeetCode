@@ -17,14 +17,9 @@ WITH prices AS (
 
 SELECT
     pro.product_id
-    , CASE
-        WHEN pri.new_price IS NULL THEN 10
-        ELSE pri.new_price
-        END AS price
+    , COALESCE(pri.new_price, 10) AS price
 FROM products pro
 LEFT JOIN prices pri
     ON pro.product_id = pri.product_id
 GROUP BY pro.product_id, pri.new_price;
 
--- SELECT *
--- FROM prices
