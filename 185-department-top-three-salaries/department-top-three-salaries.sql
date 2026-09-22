@@ -17,15 +17,3 @@ FROM ranking r
 JOIN department d
     ON r.departmentId = d.id
 WHERE r.dep_rank <= 3;
-
-
--- SELECT
---     d.name AS Department
---     , e.name AS Employee
---     , e.salary AS Salary
--- FROM employee e
--- JOIN department d
---     ON e.departmentId = d.id
--- JOIN ranking r
---     ON e.id = r.id
--- WHERE r.dep_rank >= 3;
