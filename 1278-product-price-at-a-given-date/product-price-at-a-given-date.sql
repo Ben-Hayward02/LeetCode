@@ -18,7 +18,7 @@ WITH prices AS (
 SELECT
     pro.product_id
     , COALESCE(pri.new_price, 10) AS price
-FROM products pro
+FROM (SELECT DISTINCT product_id FROM products) pro
 LEFT JOIN prices pri
     ON pro.product_id = pri.product_id
 GROUP BY pro.product_id, pri.new_price;
